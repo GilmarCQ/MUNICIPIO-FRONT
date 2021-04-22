@@ -1,0 +1,27 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+    padding: 20px 75px;
+    mat-card-header {
+        text-align: center;
+    }
+    button {
+        width: 110px;
+        margin: 5px 5px;
+        padding: 0 5px;
+    }
+    .logoLogin {
+        max-width: 250px;
+    }
+}
+
+mat-form-field {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .logoLogin {
+        max-width: 200px;
+    }
+}

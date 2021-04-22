@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-header">
+        Actualizar Credencial
+    </div>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="actualizarCredencial()">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <mat-form-field class="full-width">
+                        <mat-label>Credencial Anterior</mat-label>
+                        <input
+                            type="text"
+                            formControlName="credencialAnterior"
+                            matInput>
+                        <mat-error *ngIf="form.controls['credencialAnterior'].hasError('required')">
+                            El campo es requerido
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <mat-form-field class="full-width">
+                        <mat-label>Credencial Nueva</mat-label>
+                        <input
+                            type="text"
+                            formControlName="credencialNueva"
+                            matInput>
+                        <mat-error *ngIf="form.controls['credencialNueva'].hasError('required')">
+                            El campo es requerido
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <mat-form-field class="full-width">
+                        <mat-label>Numero de DNI</mat-label>
+                        <input
+                            type="text"
+                            formControlName="nuDni"
+                            matInput>
+                        <mat-error *ngIf="form.controls['nuDni'].hasError('required')">
+                            El campo es requerido
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <button
+                        type="submit"
+                        mat-flat-button
+                        class="full-width"
+                        color="accent"
+                        [disabled]="form.invalid">Consultar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

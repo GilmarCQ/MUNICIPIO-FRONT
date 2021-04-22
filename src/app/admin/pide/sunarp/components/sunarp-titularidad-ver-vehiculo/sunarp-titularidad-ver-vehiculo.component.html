@@ -1,0 +1,42 @@
+<mat-dialog-content>
+    <div class="card">
+        <div class="card-header">
+            Datos Vehículo
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <label class="col-sm-6 col-form-label">Placa</label>
+                <label class="col-sm-6 col-form-label">{{data.vehiculo.placa}}</label>
+            </div>
+            <div class="row">
+                <label class="col-sm-6 col-form-label">Serie</label>
+                <label class="col-sm-6 col-form-label">{{data.vehiculo.serie}}</label>
+            </div>
+            <div class="row" *ngIf="data.vehiculo.vin">
+                <label class="col-sm-6 col-form-label">Vin</label>
+                <label class="col-sm-6 col-form-label">{{data.vehiculo.vin}}</label>
+            </div>
+            <div class="row">
+                <label class="col-sm-6 col-form-label">Número Motor</label>
+                <label class="col-sm-6 col-form-label">{{data.vehiculo.nro_motor}}</label>
+            </div>
+            <div class="row">
+                <label class="col-sm-6 col-form-label">Información</label>
+                <label class="col-sm-6 col-form-label">{{data.vehiculo.marca}} {{data.vehiculo.modelo}} {{data.vehiculo.color}}</label>
+            </div>
+            <div class="row">
+                <label class="col-sm-6 col-form-label">Estado</label>
+                <label class="col-sm-6 col-form-label">{{data.vehiculo.estado}}</label>
+            </div>
+            <div class="row">
+                <label class="col-sm-6 col-form-label">Sede</label>
+                <label class="col-sm-6 col-form-label">{{data.vehiculo.sede}}</label>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="true">
+        Cerrar
+    </button>
+</mat-dialog-actions>

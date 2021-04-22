@@ -1,0 +1,41 @@
+<mat-dialog-content>
+    <div class="card">
+        <div class="card-header">
+            Lista de Asientos
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="data.asientos" matSort>
+                        <ng-container matColumnDef="tipo">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+                            <td mat-cell *matCellDef="let item">{{item.tipo}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="numeroPagina">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Número Página</th>
+                            <td mat-cell *matCellDef="let item">{{item.nroPagRef}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="idImagen">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id Imagen</th>
+                            <td mat-cell *matCellDef="let item">{{item.idImg}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef="acciones">
+                            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                            <td mat-cell *matCellDef="let item">
+                                <button class="boton" (click)="imprimirAsiento(item)">
+                                    <mat-icon aria-hidden="false">print</mat-icon>
+                                </button>
+                                <button class="boton" (click)="mostrarAsiento(item)">
+                                    <mat-icon aria-hidden="false">visibility</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="labelTable"></tr>
+                        <tr mat-row *matRowDef="let row; columns: labelTable"></tr>
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

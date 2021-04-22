@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+        Consulta Grados y Titulos de Egresados de Universidades
+    </div>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="consultar($event)">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <mat-form-field class="full-width">
+                        <mat-label>Número de Documento</mat-label>
+                        <input
+                            type="number"
+                            formControlName="nroDocumento"
+                            matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <button
+                        type="submit"
+                        mat-flat-button
+                        color="accent"
+                        [disabled]="form.invalid">Buscar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<app-sunedu-mostrar-grados-titulos [titulos]="titulos"></app-sunedu-mostrar-grados-titulos>

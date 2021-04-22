@@ -1,0 +1,28 @@
+<div *ngIf="titulos.length">
+
+    <div class="card">
+        <div class="card-header">Grados Titulos Minedu</div>
+        <div class="card-body">
+            <div class="row" *ngFor="let titulo of titulos; let i = index">
+                <div class="col-xs-12">
+                    <label class="col-sm-5 col-form-label">Apellidos y  Nombres</label>
+                    <label class="col-sm-7 col-form-label negrita">
+                        {{titulo['a:APEPAT']}} {{titulo['a:APEMAT']}} {{titulo['a:NOMBRES']}}</label>
+                </div>
+                <div class="col-xs-12">
+                    <label class="col-sm-5 col-form-label">Instituto</label>
+                    <label class="col-sm-7 col-form-label negrita">{{titulo['a:NIVEL']}} - {{titulo['a:NOMBRE_IE']}}</label>
+                </div>
+                <div class="col-xs-12">
+                    <label class="col-sm-5 col-form-label">Denominación Carrera / Titulo</label>
+                    <label class="col-sm-7 col-form-label negrita">{{titulo['a:NOMBRE_TITU']}}</label>
+                </div>
+                <div class="col-xs-12">
+                    <label class="col-sm-5 col-form-label">Fecha Emisión</label>
+                    <label class="col-sm-7 col-form-label negrita">{{titulo['a:TITU_FEC']}}</label>
+                </div>
+                <hr *ngIf="i + 1 !== titulos.length">
+            </div>
+        </div>
+    </div>
+</div>

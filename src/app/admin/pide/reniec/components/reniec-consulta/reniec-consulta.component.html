@@ -1,0 +1,70 @@
+<!-- <div class="container"> -->
+    <div class="card">
+        <div class="card-header">
+            Consulta de DNI
+        </div>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="consultarDni()">
+                <div class="row">
+                    <div class="col-xs-12 col-md-4">
+                        <mat-form-field class="full-width">
+                            <mat-label>DNI</mat-label>
+                            <input
+                                type="text"
+                                formControlName="dniConsulta"
+                                matInput>
+                            <mat-error *ngIf="form.controls['dniConsulta'].hasError('required')">
+                                El campo es requerido
+                            </mat-error>
+                            <mat-error *ngIf="form.controls['dniConsulta'].hasError('minlength')">
+                                Debe ingresar 8 dígitos.
+                            </mat-error>
+                            <mat-error *ngIf="form.controls['dniConsulta'].hasError('maxlength')">
+                                Debe ingresar 8 dígitos.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <button
+                            type="submit"
+                            mat-flat-button
+                            color="accent"
+                            [disabled]="form.invalid">Consultar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-header" *ngIf="personaDni">
+            Datos Consulta
+        </div>
+        <div class="card-body" *ngIf="personaDni">
+            <div class="row">
+                <div class="col-xs-12 col-8">
+                    <div class="col-xs-12">
+                        <label class="col-sm-5 col-form-label negrita">Apellidos y Nombres </label>
+                        <label class="col-sm-7 col-form-label">{{personaDni.apPrimer}} {{personaDni.apSegundo}} {{personaDni.prenombres}}</label>
+                    </div>
+                    <div class="col-xs-12">
+                        <label class="col-sm-5 col-form-label negrita">Estado Civil </label>
+                        <label class="col-sm-7 col-form-label">{{personaDni.estadoCivil}}</label>
+                    </div>
+                    <div class="col-xs-12">
+                        <label class="col-sm-5 col-form-label negrita">Dirección </label>
+                        <label class="col-sm-7 col-form-label">{{personaDni.direccion}}</label>
+                    </div>
+                    <div class="col-xs-12">
+                        <label class="col-sm-5 col-form-label negrita">Ubigeo </label>
+                        <label class="col-sm-7 col-form-label">{{personaDni.ubigeo}}</label>
+                    </div>
+                    <div class="col-xs-12">
+                        <label class="col-sm-5 col-form-label negrita">Restricciones </label>
+                        <label class="col-sm-7 col-form-label">{{personaDni.restriccion}}</label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 center">
+                    <img [src]="'data:image/jpg;base64,'+personaDni.foto">
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- </div> -->

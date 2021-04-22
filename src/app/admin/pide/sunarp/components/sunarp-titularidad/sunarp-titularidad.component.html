@@ -1,0 +1,146 @@
+<div class="card">
+    <div class="card-header">
+        Consulta Titularidad
+    </div>
+    <div class="card-body">
+        <form [formGroup]="formTipoBusqueda">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <mat-form-field class="full-width">
+                        <mat-label>Tipo de Busqueda</mat-label>
+                        <mat-select formControlName="tipoBusqueda" >
+                            <mat-option *ngFor="let tipoBusqueda of tipoBusquedaSunarp" [value]="tipoBusqueda">
+                                {{tipoBusqueda.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div
+                    class="col-xs-12 col-md-4"
+                    *ngIf="tipoBusquedaField.value.nombre !== 'Partida' && tipoBusquedaField.value">
+                    <mat-form-field class="full-width">
+                        <mat-label>Buscar por:</mat-label>
+                        <mat-select formControlName="tipoBusquedaTitular">
+                            <mat-option *ngFor="let tipoBusquedaTitu of tipoBusquedaTitular" [value]="tipoBusquedaTitu">
+                                {{tipoBusquedaTitu.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="formTitular" *ngIf="tipoBusquedaTitularField.value" (ngSubmit)="buscarPartidas()">
+            <div class="row">
+                <div class="col-xs-12 col-md-4"
+                    *ngIf="tipoBusquedaField.value.id === 1 && tipoBusquedaTitularField.value.id === 1">
+                    <mat-form-field class="full-width">
+                        <mat-label>DNI</mat-label>
+                        <input
+                            type="text"
+                            formControlName="nroDocumento"
+                            matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4"
+                    *ngIf="tipoBusquedaField.value.id === 1 && tipoBusquedaTitularField.value.id === 2">
+                    <mat-form-field class="full-width">
+                        <mat-label>Apellido Paterno</mat-label>
+                        <input
+                            type="text"
+                            formControlName="apellidoPaterno"
+                            matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4"
+                    *ngIf="tipoBusquedaField.value.id === 1 && tipoBusquedaTitularField.value.id === 2">
+                    <mat-form-field class="full-width">
+                        <mat-label>Apellido Materno</mat-label>
+                        <input
+                            type="text"
+                            formControlName="apellidoMaterno"
+                            matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4"
+                    *ngIf="tipoBusquedaField.value.id === 1 && tipoBusquedaTitularField.value.id === 2">
+                    <mat-form-field class="full-width">
+                        <mat-label>Nombres</mat-label>
+                        <input
+                            type="text"
+                            formControlName="nombres"
+                            matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4"
+                    *ngIf="tipoBusquedaField.value.id === 2 && tipoBusquedaTitularField.value.id === 1">
+                    <mat-form-field class="full-width">
+                        <mat-label>Razón Social</mat-label>
+                        <input
+                            type="text"
+                            formControlName="razonSocial"
+                            matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <button
+                        class="full-width"
+                        type="submit"
+                        mat-flat-button
+                        color="accent"
+                        [disabled]="formTitular.invalid">Buscar</button>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="formPartida" *ngIf="tipoBusquedaField.value.nombre === 'Partida'" (ngSubmit)="buscarPartidas()">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <mat-form-field class="full-width">
+                        <mat-label>Tipo Registro</mat-label>
+                        <mat-select formControlName="registro">
+                            <mat-option *ngFor="let tipoBusquedaReg of tipoBusquedaRegistro" [value]="tipoBusquedaReg.valor">
+                                {{tipoBusquedaReg.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <mat-form-field class="full-width">
+                        <mat-label>Oficina</mat-label>
+                        <mat-select formControlName="oficina">
+                            <mat-option *ngFor="let oficina of oficinas" [value]="oficina">
+                                {{oficina.descripcion}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <mat-form-field class="full-width">
+                        <mat-label>Número Partida</mat-label>
+                        <input
+                            type="text"
+                            matInput
+                            formControlName="partida">
+                    </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <button
+                        class="full-width"
+                        type="submit"
+                        mat-flat-button
+                        color="accent"
+                        [disabled]="formPartida.invalid">Buscar</button>
+                </div>
+            </div>
+        </form>
+        <div class="row" *ngIf="nombreTitularDni">
+            <div class="col-12">
+                <h3><span class="badge bg-success">{{nombreTitularDni}}</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-sunarp-titularidad-container
+    [registrosPartidas]="registrosPartidas"
+    [oficinas]="oficinas"
+    [tipoBusquedaRegistro]="tipoBusquedaRegistro"></app-sunarp-titularidad-container>

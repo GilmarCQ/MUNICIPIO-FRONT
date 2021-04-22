@@ -1,0 +1,37 @@
+<div *ngIf="titulos.length">
+
+    <div class="card">
+        <div class="card-header">Grados Titulos Sunedu</div>
+        <div class="card-body">
+            <div class="row" *ngFor="let titulo of titulos; let i = index">
+                <div class="col-xs-12">
+                    <label class="col-sm-5 col-form-label">Apellidos y  Nombres</label>
+                    <label class="col-sm-7 col-form-label negrita">
+                        {{titulo['apellidoPaterno']['$']}} {{titulo['apellidoMaterno']['$']}} {{titulo['nombres']['$']}}</label>
+                </div>
+                <div class="col-xs-12">
+                    <label class="col-sm-5 col-form-label">{{(titulo['tipoInstitucion']['$'] === 'U') ? 'Universidad' : 'Escuela'}}</label>
+                    <label class="col-sm-7 col-form-label negrita">{{titulo['universidad']['$']}} - {{titulo['tipoGestion']['$'] === 'N' ? 'NACIONAL' : 'PRIVADO'}}</label>
+                </div>
+                <div class="col-xs-12">
+                    <label class="col-sm-5 col-form-label">Denominación </label>
+                    <label class="col-sm-7 col-form-label negrita">{{titulo['tituloProfesional']['$']}}</label>
+                </div>
+                <div class="col-xs-12">
+                    <label class="col-sm-5 col-form-label">Fecha Emisión</label>
+                    <label class="col-sm-7 col-form-label negrita">{{titulo['fechaEmision']['$']}}</label>
+                </div>
+                <div class="col-xs-12">
+                    <label class="col-sm-5 col-form-label">Fecha Resolución</label>
+                    <label class="col-sm-7 col-form-label negrita">{{titulo['fechaResolucion']['$']}}</label>
+                </div>
+                <div class="col-xs-12">
+                    <label class="col-sm-5 col-form-label">Resolución</label>
+                    <label class="col-sm-7 col-form-label negrita">
+                        {{titulo['resolucion']['$']}}   -  {{titulo['pais']['$']}}</label>
+                </div>
+                <hr *ngIf="i + 1 !== titulos.length">
+            </div>
+        </div>
+    </div>
+</div>
